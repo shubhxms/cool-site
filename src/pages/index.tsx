@@ -3,13 +3,8 @@
 
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
-import PinnedRepos from "../components/PinnedRepos";
-import RecentBlogs from "../components/RecentBlogs";
-import { getPinnedRepos } from "../lib/repos";
-import { getBlogs } from "../lib/blogs";
-import type { Blog, Repo } from "../lib/types";
 
-const Home = (props: { latestPosts: Blog[]; pinnedRepos: Repo[] }) => {
+const Home = () => {
   return (
     <Layout
       emoji="🎐"
@@ -37,24 +32,12 @@ const Home = (props: { latestPosts: Blog[]; pinnedRepos: Repo[] }) => {
             />
           </div>
         </section>
-        <RecentBlogs recentBlogs={props.latestPosts} />
-        <PinnedRepos pinnedRepos={props.pinnedRepos} />
         <Footer />
       </div>
     </Layout>
   );
 };
 
-export async function getStaticProps() {
-  const latestPosts = await getBlogs();
-  const pinnedRepos = await getPinnedRepos();
-  return {
-    props: {
-      latestPosts: latestPosts,
-      pinnedRepos: pinnedRepos,
-    },
-    revalidate: 43200,
-  };
-}
+
 
 export default Home;
