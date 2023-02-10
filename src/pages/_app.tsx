@@ -3,7 +3,6 @@ import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import type { Session } from "next-auth";
 import type { AppType } from "next/app";
-import { trpc } from "../utils/trpc";
 import NextNProgress from "nextjs-progressbar";
 import { ThemeProvider } from "next-themes";
 
